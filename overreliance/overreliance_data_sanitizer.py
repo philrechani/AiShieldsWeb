@@ -94,8 +94,6 @@ class OverrelianceDataSanitizer():
             return filtered_data
     
     def get_keyphrases_and_links(self,prompt_text, search_number_limit,link_number_limit = None, stopword_list =[]):
-        
-        print(search_number_limit)
     
         rake = Rake()
         
@@ -107,6 +105,8 @@ class OverrelianceDataSanitizer():
         sorted_keyphrases = sorted(keyword_phrase, key= lambda x: x[0], reverse=True)
         
         keyphrase_data_list = []
+        
+        '''data = list({score: float, keyphrase: str})'''
         
         #it either the length of the number of keyphrases, or the desired search list. Because of the sorting, higher scored phrases are searched first
         for pair in sorted_keyphrases[:min(len(sorted_keyphrases), search_number_limit)]:
